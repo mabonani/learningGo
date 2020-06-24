@@ -38,7 +38,7 @@ func TestKart(t *testing.T) {
 	fmt.Println()
 	fmt.Println("===============")
 	if len(kart.Items) != 0 {
-		fmt.Println(len(kart.Items))
+		fmt.Printf("Resultado: %d\n", len(kart.Items))
 		t.Fail()
 	}
 }
