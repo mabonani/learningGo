@@ -14,10 +14,12 @@ func TestKart(t *testing.T) {
 	}
 
 	var wg sync.WaitGroup
+
 	wg.Add(1)
 	go func() {
 		for i := 0; i < 100; i++ {
-			kart.AddItem(item1)
+			fmt.Println("Executando remocao")
+			kart.RemoveItem(item1)
 		}
 		wg.Done()
 	}()
@@ -25,7 +27,8 @@ func TestKart(t *testing.T) {
 	wg.Add(1)
 	go func() {
 		for i := 0; i < 100; i++ {
-			kart.RemoveItem(item1)
+			fmt.Println("Executando adicao")
+			kart.AddItem(item1)
 		}
 		wg.Done()
 	}()
@@ -34,6 +37,8 @@ func TestKart(t *testing.T) {
 
 	fmt.Println()
 	fmt.Println("===============")
-	fmt.Println(len(kart.Items))
-
+	if len(kart.Items) != 0 {
+		fmt.Printf("Resultado: %d\n", len(kart.Items))
+		t.Fail()
+	}
 }
