@@ -7,28 +7,20 @@ import (
 )
 
 func TestKart(t *testing.T) {
-	kart := Kart{}
-
-	item1 := Item{
-		Id: 1,
-	}
-
 	var wg sync.WaitGroup
-
+	sum := 0
 	wg.Add(1)
 	go func() {
-		for i := 0; i < 100; i++ {
-			fmt.Println("Executando remocao")
-			kart.RemoveItem(item1)
+		for i := 0; i < 1000000; i++ {
+			sum = sum + 1
 		}
 		wg.Done()
 	}()
 
 	wg.Add(1)
 	go func() {
-		for i := 0; i < 100; i++ {
-			fmt.Println("Executando adicao")
-			kart.AddItem(item1)
+		for i := 0; i < 1000000; i++ {
+			sum = sum - 1
 		}
 		wg.Done()
 	}()
@@ -37,8 +29,7 @@ func TestKart(t *testing.T) {
 
 	fmt.Println()
 	fmt.Println("===============")
-	if len(kart.Items) != 0 {
-		fmt.Printf("Resultado: %d\n", len(kart.Items))
-		t.Fail()
-	}
+
+	fmt.Printf("Resultado: %d\n", sum)
+	t.Fail()
 }
