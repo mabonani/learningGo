@@ -8,12 +8,12 @@ import (
 func main() {
 	var myKart = kart.Kart{}
 
-	bolacha := product.Product{
-		Name:  "bolacha",
+	banana := product.Product{
+		Name:  "banana",
 		Price: 3.99,
 	}
 
-	caneta := product.Product{
+	/*caneta := product.Product{
 		Name:  "caneta",
 		Price: 1.20,
 	}
@@ -47,9 +47,18 @@ func main() {
 
 	myKart.ShowItems()
 	myKart.CalculateKartPrice()
-	myKart.RemoveItem(itemCaneta)
+	myKart.RemoveItem(itemCaneta)*/
 
+	itemBanana := kart.Item{
+		Product:  banana,
+		Quantity: 6,
+	}
+	myKart.AddItem(itemBanana)
 	myKart.ShowItems()
 	myKart.CalculateKartPrice()
+
+	createdKart := kart.CreateKart(myKart)
+
+	createdKart.ShowItems()
 
 }

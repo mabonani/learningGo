@@ -1,11 +1,16 @@
 package kart
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 type Kart struct {
-	id     int32
-	userId int32
-	Items  []Item
+	Id             int64
+	UserId         int64
+	Status         string
+	CreateDateTime time.Time
+	Items          []Item
 }
 
 func (kart *Kart) AddItem(item Item) {
