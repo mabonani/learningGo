@@ -11,75 +11,45 @@ func main() {
 	bolacha := product.Product{
 		Name:  "bolacha",
 		Price: 3.99,
-		Color: "preta",
 	}
 
-	canetaAzul := product.Product{
+	caneta := product.Product{
 		Name:  "caneta",
 		Price: 1.20,
-		Color: "azul",
 	}
 
-	canetaVermelha:= product.Product{
-		Name:  "caneta",
-		Price: 1.20,
-		Color: "vermelho",
-	}
-
-	lapisVermelho := product.Product{
+	lapis := product.Product{
 		Name:  "lapis",
 		Price: 1.00,
-		Color: "vermelho",
-	}
-
-	lapisPreto := product.Product{
-		Name:  "lapis",
-		Price: 1.00,
-		Color: "preto",
 	}
 
 	itemBolacha := kart.Item{
-		"1",
-		bolacha,
-		10,
+		Id:       nil,
+		Product:  bolacha,
+		Quantity: 10,
 	}
 
-	itemCanetaAzul := kart.Item{
-		"2",
-		canetaAzul,
-		12,
+	itemCaneta := kart.Item{
+		Id:       nil,
+		Product:  caneta,
+		Quantity: 12,
 	}
 
-	itemCanetaVermelha := kart.Item{
-		"3",
-		canetaVermelha,
-		12,
-	}
-
-	itemLapisVermelho := kart.Item{
-		"4",
-		lapisVermelho,
-		6,
-	}
-
-	itemLapisPreto:= kart.Item{
-		"5",
-		lapisPreto,
-		6,
+	itemLapis := kart.Item{
+		Id:       4,
+		Product:  lapis,
+		Quantity: 6,
 	}
 
 	myKart.AddItem(itemBolacha)
-	myKart.AddItem(itemCanetaAzul)
-	myKart.AddItem(itemCanetaVermelha)
-	myKart.AddItem(itemLapisVermelho)
+	myKart.AddItem(itemCaneta)
+	myKart.AddItem(itemLapis)
 
 	myKart.ShowItems()
-
-	myKart.RemoveItem(itemLapisPreto) 
-
-	myKart.ShowItems()
-
-	myKart.AddItem(itemLapisPreto)
+	myKart.CalculateKartPrice()
+	myKart.RemoveItem(itemCaneta)
 
 	myKart.ShowItems()
+	myKart.CalculateKartPrice()
+
 }

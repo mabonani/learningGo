@@ -3,7 +3,9 @@ package kart
 import "fmt"
 
 type Kart struct {
-	Items []Item
+	id     int32
+	userId int32
+	Items  []Item
 }
 
 func (kart *Kart) AddItem(item Item) {
@@ -29,4 +31,16 @@ func (kart *Kart) RemoveItem(item Item) {
 
 func (kart *Kart) ShowItems() {
 	fmt.Printf("\nKart Items: %v", kart.Items)
+}
+
+func (kart *Kart) CalculateKartPrice() float32 {
+	var kartPrice float32
+	for _, item := range kart.Items {
+		itemPrice := float32(item.Quantity) * item.Product.Price
+		kartPrice += itemPrice
+	}
+
+	fmt.Printf("\nkart total price is %v", kartPrice)
+
+	return kartPrice
 }
