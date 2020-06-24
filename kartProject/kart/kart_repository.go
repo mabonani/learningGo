@@ -52,7 +52,8 @@ func queryUserKart(dbConnection *sql.DB, userId int64) (*sql.Rows, error) {
 	result, err := dbConnection.Query("SELECT k.id, k.status, k.createDateTime, ki.id, ki.quantity, p.name, p.price "+
 		"FROM kart k, kartitem ki, product p "+
 		"WHERE k.userId = ? "+
-		"AND k.id in ( SELECT max(lk.id) from kart lk where userId= ? ) "+
+		"AND k.status = 'OPEN' "+
+		"AND k.id in ( SELECT max(lk.id) from kart lk where userId= ? and lk.status = 'OPEN') "+
 		"AND k.id = ki.kartId "+
 		"AND ki.productName = p.name "+
 		"ORDER BY p.name", userId, userId)
